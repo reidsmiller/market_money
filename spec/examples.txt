@@ -1,13 +1,15 @@
 example_id                                                  | status | run_time        |
 ----------------------------------------------------------- | ------ | --------------- |
-./spec/api/v0/markets/markets_request_spec.rb[1:1]          | passed | 0.2447 seconds  |
-./spec/api/v0/markets/markets_request_spec.rb[1:2:1]        | passed | 0.02392 seconds |
-./spec/api/v0/markets/markets_request_spec.rb[1:2:2]        | passed | 0.07785 seconds |
-./spec/api/v0/markets/vendors/vendor_request_spec.rb[1:1:1] | passed | 0.02688 seconds |
-./spec/api/v0/markets/vendors/vendor_request_spec.rb[1:1:2] | passed | 0.02306 seconds |
-./spec/models/market_spec.rb[1:1:1]                         | passed | 0.00062 seconds |
-./spec/models/market_spec.rb[1:1:2]                         | passed | 0.00063 seconds |
-./spec/models/market_vendor_spec.rb[1:1:1]                  | passed | 0.00147 seconds |
-./spec/models/market_vendor_spec.rb[1:1:2]                  | passed | 0.00105 seconds |
-./spec/models/vendor_spec.rb[1:1:1]                         | passed | 0.00058 seconds |
-./spec/models/vendor_spec.rb[1:1:2]                         | passed | 0.00069 seconds |
+./spec/api/v0/markets/markets_request_spec.rb[1:1]          | passed | 0.30084 seconds |
+./spec/api/v0/markets/markets_request_spec.rb[1:2:1]        | passed | 0.02386 seconds |
+./spec/api/v0/markets/markets_request_spec.rb[1:2:2]        | passed | 0.02354 seconds |
+./spec/api/v0/markets/vendors/vendor_request_spec.rb[1:1:1] | passed | 0.02702 seconds |
+./spec/api/v0/markets/vendors/vendor_request_spec.rb[1:1:2] | passed | 0.02347 seconds |
+./spec/api/v0/vendors/vendor_request_spec.rb[1:1:1]         | passed | 0.02471 seconds |
+./spec/api/v0/vendors/vendor_request_spec.rb[1:1:2]         | passed | 0.02315 seconds |
+./spec/models/market_spec.rb[1:1:1]                         | passed | 0.00069 seconds |
+./spec/models/market_spec.rb[1:1:2]                         | passed | 0.0006 seconds  |
+./spec/models/market_vendor_spec.rb[1:1:1]                  | passed | 0.00158 seconds |
+./spec/models/market_vendor_spec.rb[1:1:2]                  | passed | 0.00102 seconds |
+./spec/models/vendor_spec.rb[1:1:1]                         | passed | 0.00065 seconds |
+./spec/models/vendor_spec.rb[1:1:2]                         | passed | 0.00061 seconds |

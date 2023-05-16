@@ -30,23 +30,23 @@ RSpec.describe 'Vendor Requests' do
 
       vendor = JSON.parse(response.body, symbolize_names: true)
 
-      expect(vendor).to have_key(:id)
-      expect(vendor[:id].to_i).to be_an(Integer)
+      expect(vendor[:data]).to have_key(:id)
+      expect(vendor[:data][:id].to_i).to be_an(Integer)
 
-      expect(vendor[:attributes]).to have_key(:name)
-      expect(vendor[:attributes][:name]).to be_a(String)
+      expect(vendor[:data][:attributes]).to have_key(:name)
+      expect(vendor[:data][:attributes][:name]).to be_a(String)
 
-      expect(vendor[:attributes]).to have_key(:description)
-      expect(vendor[:attributes][:description]).to be_a(String)
+      expect(vendor[:data][:attributes]).to have_key(:description)
+      expect(vendor[:data][:attributes][:description]).to be_a(String)
 
-      expect(vendor[:attributes]).to have_key(:contact_name)
-      expect(vendor[:attributes][:contact_name]).to be_a(String)
+      expect(vendor[:data][:attributes]).to have_key(:contact_name)
+      expect(vendor[:data][:attributes][:contact_name]).to be_a(String)
 
-      expect(vendor[:attributes]).to have_key(:contact_phone)
-      expect(vendor[:attributes][:contact_phone]).to be_a(String)
+      expect(vendor[:data][:attributes]).to have_key(:contact_phone)
+      expect(vendor[:data][:attributes][:contact_phone]).to be_a(String)
 
-      expect(vendor[:attributes]).to have_key(:credit_accepted)
-      expect(vendor[:attributes][:credit_accepted]).to be_a(TrueClass).or be_a(FalseClass)
+      expect(vendor[:data][:attributes]).to have_key(:credit_accepted)
+      expect(vendor[:data][:attributes][:credit_accepted]).to be_a(TrueClass).or be_a(FalseClass)
     end
 
     it 'sad path' do
@@ -56,7 +56,7 @@ RSpec.describe 'Vendor Requests' do
 
       data = JSON.parse(response.body, symbolize_names: true)
 
-      expect(data[:errors]).to eq("Couldn't find Market with 'id'=123123123123")
+      expect(data[:errors]).to eq("Couldn't find Vendor with 'id'=123123123123")
     end
   end
 end
