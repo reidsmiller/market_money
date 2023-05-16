@@ -1,11 +1,13 @@
-example_id                                           | status | run_time        |
----------------------------------------------------- | ------ | --------------- |
-./spec/api/v0/markets/markets_request_spec.rb[1:1]   | passed | 0.28788 seconds |
-./spec/api/v0/markets/markets_request_spec.rb[1:2:1] | passed | 0.02457 seconds |
-./spec/api/v0/markets/markets_request_spec.rb[1:2:2] | passed | 0.02228 seconds |
-./spec/models/market_spec.rb[1:1:1]                  | passed | 0.00064 seconds |
-./spec/models/market_spec.rb[1:1:2]                  | passed | 0.00049 seconds |
-./spec/models/market_vendor_spec.rb[1:1:1]           | passed | 0.00149 seconds |
-./spec/models/market_vendor_spec.rb[1:1:2]           | passed | 0.00106 seconds |
-./spec/models/vendor_spec.rb[1:1:1]                  | passed | 0.00057 seconds |
-./spec/models/vendor_spec.rb[1:1:2]                  | passed | 0.00067 seconds |
+example_id                                                  | status | run_time        |
+----------------------------------------------------------- | ------ | --------------- |
+./spec/api/v0/markets/markets_request_spec.rb[1:1]          | passed | 0.2447 seconds  |
+./spec/api/v0/markets/markets_request_spec.rb[1:2:1]        | passed | 0.02392 seconds |
+./spec/api/v0/markets/markets_request_spec.rb[1:2:2]        | passed | 0.07785 seconds |
+./spec/api/v0/markets/vendors/vendor_request_spec.rb[1:1:1] | passed | 0.02688 seconds |
+./spec/api/v0/markets/vendors/vendor_request_spec.rb[1:1:2] | passed | 0.02306 seconds |
+./spec/models/market_spec.rb[1:1:1]                         | passed | 0.00062 seconds |
+./spec/models/market_spec.rb[1:1:2]                         | passed | 0.00063 seconds |
+./spec/models/market_vendor_spec.rb[1:1:1]                  | passed | 0.00147 seconds |
+./spec/models/market_vendor_spec.rb[1:1:2]                  | passed | 0.00105 seconds |
+./spec/models/vendor_spec.rb[1:1:1]                         | passed | 0.00058 seconds |
+./spec/models/vendor_spec.rb[1:1:2]                         | passed | 0.00069 seconds |
