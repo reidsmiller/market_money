@@ -1,0 +1,10 @@
+example_id                                         | status | run_time        |
+-------------------------------------------------- | ------ | --------------- |
+./spec/api/v0/markets/markets_request_spec.rb[1:1] | passed | 0.22283 seconds |
+./spec/api/v0/markets/markets_request_spec.rb[1:2] | passed | 0.07418 seconds |
+./spec/models/market_spec.rb[1:1:1]                | passed | 0.00098 seconds |
+./spec/models/market_spec.rb[1:1:2]                | passed | 0.0008 seconds  |
+./spec/models/market_vendor_spec.rb[1:1:1]         | passed | 0.00255 seconds |
+./spec/models/market_vendor_spec.rb[1:1:2]         | passed | 0.00112 seconds |
+./spec/models/vendor_spec.rb[1:1:1]                | passed | 0.00078 seconds |
+./spec/models/vendor_spec.rb[1:1:2]                | passed | 0.00062 seconds |
