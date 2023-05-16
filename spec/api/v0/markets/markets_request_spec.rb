@@ -64,5 +64,53 @@ RSpec.describe 'Markets Request' do
     end
   end
 
-  
+  describe 'sends a single market by id' do
+    it 'happy path' do
+      get "/api/v0/markets/#{@market1.id}"
+
+      expect(response).to be_successful
+
+      market = JSON.parse(response.body, symbolize_names: true)
+
+      expect(market[:data]).to have_key(:id)
+      expect(market[:data][:id].to_i).to be_an(Integer)
+
+      expect(market[:data][:attributes]).to have_key(:name)
+      expect(market[:data][:attributes][:name]).to be_a(String)
+
+      expect(market[:data][:attributes]).to have_key(:street)
+      expect(market[:data][:attributes][:street]).to be_a(String)
+
+      expect(market[:data][:attributes]).to have_key(:city)
+      expect(market[:data][:attributes][:city]).to be_a(String)
+
+      expect(market[:data][:attributes]).to have_key(:county)
+      expect(market[:data][:attributes][:county]).to be_a(String)
+
+      expect(market[:data][:attributes]).to have_key(:state)
+      expect(market[:data][:attributes][:state]).to be_a(String)
+
+      expect(market[:data][:attributes]).to have_key(:zip)
+      expect(market[:data][:attributes][:zip]).to be_a(String)
+
+      expect(market[:data][:attributes]).to have_key(:lat)
+      expect(market[:data][:attributes][:lat]).to be_a(String)
+
+      expect(market[:data][:attributes]).to have_key(:lon)
+      expect(market[:data][:attributes][:lon]).to be_a(String)
+
+      expect(market[:data][:attributes]).to have_key(:vendor_count)
+      expect(market[:data][:attributes][:vendor_count]).to be_an(Integer)
+    end
+
+    it 'sad path' do
+      get '/api/v0/markets/123123123123'
+
+      expect(response).to_not be_successful
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data[:errors]).to eq("Couldn't find Market with 'id'=123123123123")
+    end
+  end
 end
