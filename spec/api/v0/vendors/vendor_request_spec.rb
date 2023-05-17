@@ -151,5 +151,15 @@ RSpec.describe 'Vendor Requests' do
       expect(vendor[:data][:attributes]).to have_key(:credit_accepted)
       expect(vendor[:data][:attributes][:credit_accepted]).to be(false)
     end
+
+    it 'sad path #1' do
+      patch '/api/v0/vendors/123123123123', params: edit_params.to_json, headers: { 'Content-Type' => 'application/json' }
+
+      expect(response).to_not be_successful
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data[:errors][:detail]).to eq("Couldn't find Market with 'id'=123123123123")
+    end
   end
 end
