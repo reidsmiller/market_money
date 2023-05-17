@@ -57,9 +57,9 @@ RSpec.describe 'Vendor Requests' do
       get '/api/v0/markets/123123123123/vendors'
 
       expect(response).to_not be_successful
+      expect(response).to have_http_status(404)
 
       data = JSON.parse(response.body, symbolize_names: true)
-
       expect(data[:errors][:detail]).to eq("Couldn't find Market with 'id'=123123123123")
     end
   end
