@@ -16,6 +16,10 @@ class Api::V0::MarketVendorsController < ApplicationController
   end
 
   def render_unprocessable_entity_response(exception)
-    render json: { errors: { detail: "Validation failed: #{exception.record.errors.full_messages.join(', ')}" } }, status: 404
+    if exception.message.include?('Market vendor association between')
+      render json: { errors: { detail: exception.message } }, status: 422
+    else
+      render json: { errors: { detail: exception.message } }, status: 404
+    end
   end
 end
