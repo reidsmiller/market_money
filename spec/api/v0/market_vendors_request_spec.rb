@@ -54,4 +54,18 @@ RSpec.describe 'MarketVendor Requests' do
       end
     end
   end
+
+  describe 'delete a marketvendor' do
+    describe 'happy path' do
+      let(:valid_params) { {market_id: @market1.id, vendor_id: @vendor1.id} }
+      let(:invalid_params) { {market_id: 123123123123, vendor_id: @vendor1.id} }
+
+      it 'can destroy a marketvendor' do
+        delete '/api/v0/market_vendors', params: valid_params.to_json, headers: { 'Content-Type' => 'application/json' }
+
+        expect(response).to be_successful
+        expect(response).to have_http_status(204)
+      end
+    end
+  end
 end
