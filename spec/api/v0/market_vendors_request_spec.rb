@@ -14,7 +14,8 @@ RSpec.describe 'MarketVendor Requests' do
   end
 
   describe 'Create a MarketVendor' do
-    let(:valid_params) { {market_id: @market1.id, vendor_id: @vendor1} }
+    let(:valid_params) { {market_id: @market1.id, vendor_id: @vendor1.id} }
+    let(:invalid_params) { {market_id: 123123123123, vendor_id: @vendor1.id} }
 
     it 'happy_path' do
       post '/api/v0/market_vendors', params: valid_params.to_json, headers: { 'Content-Type' => 'application/json' }
@@ -24,7 +25,18 @@ RSpec.describe 'MarketVendor Requests' do
 
       message = JSON.parse(response.body, symbolize_names: true)
 
-      expect(message).to eq('Successfully added vendor to market')
+      expect(message[:message]).to eq('Successfully added vendor to market')
+    end
+
+    it 'sad_path #1' do
+      post '/api/v0/market_vendors', params: invalid_params.to_json, headers: { 'Content-Type' => 'application/json' }
+
+      expect(response).to_not be_successful
+      expect(response).to have_http_status(404)
+
+      message = JSON.parse(response.body, symbolize_names: true)
+
+      expect(message[:errors][:detail]).to eq('Validation failed: Market must exist')
     end
   end
 end

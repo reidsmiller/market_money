@@ -5,4 +5,7 @@ RSpec.describe MarketVendor, type: :model do
     it { should belong_to(:market) }
     it { should belong_to(:vendor) }
   end
+
+  describe 'validations' do
+  end
 end
