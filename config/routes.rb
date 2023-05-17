@@ -9,6 +9,9 @@ Rails.application.routes.draw do
         resources :vendors, only: [:index]
       end
       resources :vendors, except: [:index]
+      resources :market_vendors, only: [:create]
     end
   end
+
+  delete '/api/v0/market_vendors', to: 'api/v0/market_vendors#destroy'
 end

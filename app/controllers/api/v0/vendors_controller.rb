@@ -35,6 +35,6 @@ class Api::V0::VendorsController < ApplicationController
   end
 
   def render_unprocessable_entity_response(exception)
-    render json: { errors: { detail: "Validation failed: #{exception.record.errors.full_messages.join(', ')}" } }, status: 400
+    render json: { errors: { detail: exception.message } }, status: 400
   end
 end
