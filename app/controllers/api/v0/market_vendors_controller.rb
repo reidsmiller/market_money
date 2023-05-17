@@ -1,13 +1,14 @@
 class Api::V0::MarketVendorsController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-  
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+
   def create
     MarketVendor.create!(market_vendor_params)
     render json: { message: 'Successfully added vendor to market' }, status: 201
   end
 
   def destroy
-    market_vendor = MarketVendor.find_by(market_vendor_params)
+    market_vendor = MarketVendor.find_by!(market_vendor_params)
     market_vendor.destroy!
   end
 
@@ -18,10 +19,11 @@ class Api::V0::MarketVendorsController < ApplicationController
   end
 
   def render_unprocessable_entity_response(exception)
-    if exception.message.include?('Market vendor association between')
-      render json: { errors: { detail: exception.message } }, status: 422
-    else
-      render json: { errors: { detail: exception.message } }, status: 404
-    end
+    response_status = MarketVendorValidationSerializer.new(exception).find_status
+    render json: { errors: { detail: exception.message } }, status: response_status
+  end
+
+  def render_not_found_response(exception)
+    render json: MarketVendorNotFoundSerializer.new(exception, market_vendor_params).serialize, status: 404
   end
 end
