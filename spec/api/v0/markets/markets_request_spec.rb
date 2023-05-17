@@ -110,7 +110,7 @@ RSpec.describe 'Markets Request' do
 
       data = JSON.parse(response.body, symbolize_names: true)
 
-      expect(data[:errors]).to eq("Couldn't find Market with 'id'=123123123123")
+      expect(data[:errors][:detail]).to eq("Couldn't find Market with 'id'=123123123123")
     end
   end
 end
