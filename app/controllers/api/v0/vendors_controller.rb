@@ -19,8 +19,9 @@ class Api::V0::VendorsController < ApplicationController
   end
 
   def update
-    if Vendor.update(vendor_params)
-      render json: VendorSerializer.new(Vendor.find(params[:id])), status: :accepted
+    vendor = Vendor.find(params[:id])
+    if vendor.update(vendor_params)
+      render json: VendorSerializer.new(vendor), status: :accepted
     else
       render json: { errors: { detail: "Validation failed: #{vendor.errors.full_messages.join(', ')}" } }, status: :unprocessable_entity
     end
