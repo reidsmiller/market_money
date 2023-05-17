@@ -94,19 +94,19 @@ RSpec.describe 'Vendor Requests' do
       expect(vendor[:data][:id].to_i).to be_an(Integer)
 
       expect(vendor[:data][:attributes]).to have_key(:name)
-      expect(vendor[:data][:attributes][:name]).to be_a(String)
+      expect(vendor[:data][:attributes][:name]).to eq('Buzzy Bees')
 
       expect(vendor[:data][:attributes]).to have_key(:description)
-      expect(vendor[:data][:attributes][:description]).to be_a(String)
+      expect(vendor[:data][:attributes][:description]).to eq('local honey and wax products')
 
       expect(vendor[:data][:attributes]).to have_key(:contact_name)
-      expect(vendor[:data][:attributes][:contact_name]).to be_a(String)
+      expect(vendor[:data][:attributes][:contact_name]).to eq('Berly Couwer')
 
       expect(vendor[:data][:attributes]).to have_key(:contact_phone)
-      expect(vendor[:data][:attributes][:contact_phone]).to be_a(String)
+      expect(vendor[:data][:attributes][:contact_phone]).to eq('8389928383')
 
       expect(vendor[:data][:attributes]).to have_key(:credit_accepted)
-      expect(vendor[:data][:attributes][:credit_accepted]).to be_a(TrueClass).or be_a(FalseClass)
+      expect(vendor[:data][:attributes][:credit_accepted]).to be(true)
     end
 
     it 'sad path' do
@@ -117,6 +117,41 @@ RSpec.describe 'Vendor Requests' do
       data = JSON.parse(response.body, symbolize_names: true)
 
       expect(data[:errors][:detail]).to eq("Validation failed: Contact name can't be blank, Contact phone can't be blank")
+    end
+  end
+
+  describe 'update a vendor' do
+    let(:edit_params) { { title: 'Test Post', body: {
+      'contact_name': 'Kimberly Couwer',
+      'credit_accepted': false
+    } } }
+
+    it 'happy path' do
+      patch "/api/v0/vendors/#{@vendor1.id}", params: edit_params.to_json, headers: { 'Content-Type' => 'application/json' }
+
+      expect(response).to be_successful
+
+      vendor = JSON.parse(response.body, symbolize_names: true)
+
+      expect(vendor[:data]).to have_key(:id)
+      expect(vendor[:data][:id].to_i).to be_an(Integer)
+
+      expect(vendor[:data][:attributes]).to have_key(:name)
+      expect(vendor[:data][:attributes][:name]).to eq('Buzzy Bees')
+
+      expect(vendor[:data][:attributes]).to have_key(:description)
+      expect(vendor[:data][:attributes][:description]).to eq('local honey and wax products')
+
+      expect(vendor[:data][:attributes]).to have_key(:contact_name)
+      expect(vendor[:data][:attributes][:contact_name]).to eq('Kimberly Couwer')
+
+      expect(vendor[:data][:attributes]).to have_key(:contact_phone)
+      expect(vendor[:data][:attributes][:contact_phone]).to eq('8389928383')
+
+      expect(vendor[:data][:attributes]).to have_key(:credit_accepted)
+      expect(vendor[:data][:attributes][:credit_accepted]).to be(false)
+
+
     end
   end
 end

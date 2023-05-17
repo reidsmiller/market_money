@@ -31,4 +31,8 @@ RSpec.describe Vendor, type: :model do
       expect(vendor2.save).to be(false)
     end
   end
+
+  describe 'update a vendor' do
+    
+  end
 end
