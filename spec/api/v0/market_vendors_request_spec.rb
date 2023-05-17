@@ -61,11 +61,17 @@ RSpec.describe 'MarketVendor Requests' do
       let(:invalid_params) { {market_id: 123123123123, vendor_id: @vendor1.id} }
 
       it 'can destroy a marketvendor' do
+        MarketVendor.create!(market_id: @market1.id, vendor_id: @vendor1.id)
         delete '/api/v0/market_vendors', params: valid_params.to_json, headers: { 'Content-Type' => 'application/json' }
 
         expect(response).to be_successful
         expect(response).to have_http_status(204)
+
+        get "/api/v0/markets/#{@market1.id}/vendors"
+
+        vendors = JSON.parse(response.body, symbolize_names: true)
+        expect(vendors[:data].count).to eq(0)
       end
     end
-  end
+
 end
