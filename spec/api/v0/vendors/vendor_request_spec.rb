@@ -33,6 +33,7 @@ RSpec.describe 'Vendor Requests' do
       get "/api/v0/vendors/#{@vendor1.id}"
 
       expect(response).to be_successful
+      expect(response).to have_http_status(200)
 
       vendor = JSON.parse(response.body, symbolize_names: true)
 
@@ -59,9 +60,9 @@ RSpec.describe 'Vendor Requests' do
       get '/api/v0/vendors/123123123123'
 
       expect(response).to_not be_successful
+      expect(response).to have_http_status(404)
 
       data = JSON.parse(response.body, symbolize_names: true)
-
       expect(data[:errors][:detail]).to eq("Couldn't find Vendor with 'id'=123123123123")
     end
   end
@@ -87,6 +88,7 @@ RSpec.describe 'Vendor Requests' do
       post '/api/v0/vendors', params: valid_params.to_json, headers: { 'Content-Type' => 'application/json' }
 
       expect(response).to be_successful
+      expect(response).to have_http_status(201)
 
       vendor = JSON.parse(response.body, symbolize_names: true)
 
@@ -113,9 +115,9 @@ RSpec.describe 'Vendor Requests' do
       post '/api/v0/vendors', params: invalid_params.to_json, headers: { 'Content-Type' => 'application/json' }
 
       expect(response).to_not be_successful
+      expect(response).to have_http_status(400)
 
       data = JSON.parse(response.body, symbolize_names: true)
-
       expect(data[:errors][:detail]).to eq("Validation failed: Contact name can't be blank, Contact phone can't be blank")
     end
   end
@@ -135,6 +137,7 @@ RSpec.describe 'Vendor Requests' do
       patch "/api/v0/vendors/#{@vendor1.id}", params: edit_params.to_json, headers: { 'Content-Type' => 'application/json' }
 
       expect(response).to be_successful
+      expect(response).to have_http_status(200)
 
       vendor = JSON.parse(response.body, symbolize_names: true)
 
@@ -161,9 +164,9 @@ RSpec.describe 'Vendor Requests' do
       patch '/api/v0/vendors/123123123123', params: edit_params.to_json, headers: { 'Content-Type' => 'application/json' }
 
       expect(response).to_not be_successful
+      expect(response).to have_http_status(404)
 
       data = JSON.parse(response.body, symbolize_names: true)
-
       expect(data[:errors][:detail]).to eq("Couldn't find Vendor with 'id'=123123123123")
     end
 
@@ -171,9 +174,9 @@ RSpec.describe 'Vendor Requests' do
       patch "/api/v0/vendors/#{@vendor1.id}", params: bad_params.to_json, headers: { 'Content-Type' => 'application/json' }
 
       expect(response).to_not be_successful
+      expect(response).to have_http_status(400)
 
       data = JSON.parse(response.body, symbolize_names: true)
-
       expect(data[:errors][:detail]).to eq("Validation failed: Contact name can't be blank")
     end
   end
@@ -183,8 +186,17 @@ RSpec.describe 'Vendor Requests' do
       delete "/api/v0/vendors/#{@vendor1.id}"
 
       expect(response).to be_successful
+      expect(response).to have_http_status(204)
+    end
 
-      expect(response.status).to eq(204)
+    it 'sad path' do
+      delete '/api/v0/vendors/123123123123'
+
+      expect(response).to_not be_successful
+      expect(response).to have_http_status(404)
+
+      data = JSON.parse(response.body, symbolize_names: true)
+      expect(data[:errors][:detail]).to eq("Couldn't find Vendor with 'id'=123123123123")
     end
   end
 end

@@ -26,6 +26,7 @@ RSpec.describe 'Markets Request' do
     get '/api/v0/markets'
 
     expect(response).to be_successful
+    expect(response).to have_http_status(200)
 
     markets = JSON.parse(response.body, symbolize_names: true)
 
@@ -69,6 +70,7 @@ RSpec.describe 'Markets Request' do
       get "/api/v0/markets/#{@market1.id}"
 
       expect(response).to be_successful
+      expect(response).to have_http_status(200)
 
       market = JSON.parse(response.body, symbolize_names: true)
 
@@ -107,6 +109,7 @@ RSpec.describe 'Markets Request' do
       get '/api/v0/markets/123123123123'
 
       expect(response).to_not be_successful
+      expect(response).to have_http_status(404)
 
       data = JSON.parse(response.body, symbolize_names: true)
 
