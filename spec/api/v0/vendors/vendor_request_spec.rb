@@ -177,4 +177,14 @@ RSpec.describe 'Vendor Requests' do
       expect(data[:errors][:detail]).to eq("Validation failed: Contact name can't be blank")
     end
   end
+
+  describe 'delete a vendor' do
+    it 'happy path' do
+      delete "/api/v0/vendors/#{@vendor1.id}"
+
+      expect(response).to be_successful
+
+      expect(response.status).to eq(204)
+    end
+  end
 end
