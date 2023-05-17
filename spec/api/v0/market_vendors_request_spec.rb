@@ -56,10 +56,10 @@ RSpec.describe 'MarketVendor Requests' do
   end
 
   describe 'delete a marketvendor' do
-    describe 'happy path' do
-      let(:valid_params) { {market_id: @market1.id, vendor_id: @vendor1.id} }
-      let(:invalid_params) { {market_id: 123123123123, vendor_id: @vendor1.id} }
+    let(:valid_params) { {market_id: @market1.id, vendor_id: @vendor1.id} }
+    let(:invalid_params) { {market_id: 123123123123, vendor_id: 123123123123} }
 
+    describe 'happy path' do
       it 'can destroy a marketvendor' do
         MarketVendor.create!(market_id: @market1.id, vendor_id: @vendor1.id)
         delete '/api/v0/market_vendors', params: valid_params.to_json, headers: { 'Content-Type' => 'application/json' }
@@ -74,4 +74,17 @@ RSpec.describe 'MarketVendor Requests' do
       end
     end
 
+    describe 'sad path' do
+      it 'returns correct message when no matches return' do
+        MarketVendor.create!(market_id: @market1.id, vendor_id: @vendor1.id)
+        delete '/api/v0/market_vendors', params: invalid_params.to_json, headers: { 'Content-Type' => 'application/json' }
+
+        expect(response).to_not be_successful
+        expect(response).to have_http_status(404)
+
+        data = JSON.parse(response.body, symbolize_names: true)
+        expect(data[:errors][:detail]).to eq('No MarketVendor with market_id=123123123123 AND vendor_id=123123123123')
+      end
+    end
+  end
 end
