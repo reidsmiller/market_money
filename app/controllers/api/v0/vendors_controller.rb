@@ -28,7 +28,13 @@ class Api::V0::VendorsController < ApplicationController
   end
 
   def destroy
-
+    vendor = Vendor.find(params[:id])
+    vendor.market_vendors.destroy_all
+    if vendor.destroy
+      head :no_content
+    else
+      render json: { errors: { detail: "Couldn't find Vendor with 'id'=#{params[:id]}" } }, status: :unprocessable_entity
+    end
   end
 
   private
