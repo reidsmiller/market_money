@@ -150,8 +150,6 @@ RSpec.describe 'Vendor Requests' do
 
       expect(vendor[:data][:attributes]).to have_key(:credit_accepted)
       expect(vendor[:data][:attributes][:credit_accepted]).to be(false)
-
-
     end
   end
 end
