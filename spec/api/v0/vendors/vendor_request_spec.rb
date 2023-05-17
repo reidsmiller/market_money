@@ -67,21 +67,21 @@ RSpec.describe 'Vendor Requests' do
   end
 
   describe 'create a vendor' do
-    let(:valid_params) { { title: 'Test Post', body: {
+    let(:valid_params) { {
       'name': 'Buzzy Bees',
       'description': 'local honey and wax products',
       'contact_name': 'Berly Couwer',
       'contact_phone': '8389928383',
       'credit_accepted': true
-    } } }
+    } }
 
-    let(:invalid_params) { { title: 'Test Post', body: {
+    let(:invalid_params) { {
       'name': 'Buzzy Bees',
       'description': 'local honey and wax products',
       'contact_name': '',
       'contact_phone': '',
       'credit_accepted': false
-    } } }
+    } }
 
     it 'happy path' do
       post '/api/v0/vendors', params: valid_params.to_json, headers: { 'Content-Type' => 'application/json' }
@@ -121,15 +121,15 @@ RSpec.describe 'Vendor Requests' do
   end
 
   describe 'update a vendor' do
-    let(:edit_params) { { title: 'Test Post', body: {
+    let(:edit_params) { {
       'contact_name': 'Kimberly Couwer',
       'credit_accepted': false
-    } } }
+    } }
 
-    let(:bad_params) { { title: 'Test Post', body: {
+    let(:bad_params) { {
       'contact_name': '',
       'credit_accepted': false
-    } } }
+    } }
 
     it 'happy path' do
       patch "/api/v0/vendors/#{@vendor1.id}", params: edit_params.to_json, headers: { 'Content-Type' => 'application/json' }
