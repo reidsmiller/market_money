@@ -3,14 +3,7 @@ require 'rails_helper'
 RSpec.describe 'MarketVendor Requests' do
   before(:each) do
     @market1 = create(:market)
-    @market2 = create(:market)
-    @market3 = create(:market)
-
     @vendor1 = create(:vendor)
-    @vendor2 = create(:vendor)
-    @vendor3 = create(:vendor)
-    @vendor4 = create(:vendor)
-    @vendor5 = create(:vendor)
   end
 
   describe 'Create a MarketVendor' do
@@ -28,15 +21,34 @@ RSpec.describe 'MarketVendor Requests' do
       expect(message[:message]).to eq('Successfully added vendor to market')
     end
 
-    it 'sad_path #1' do
-      post '/api/v0/market_vendors', params: invalid_params.to_json, headers: { 'Content-Type' => 'application/json' }
+    describe 'sad_path #1' do
+      it 'market or vendor id is invalid' do
+        post '/api/v0/market_vendors', params: invalid_params.to_json, headers: { 'Content-Type' => 'application/json' }
 
-      expect(response).to_not be_successful
-      expect(response).to have_http_status(404)
+        expect(response).to_not be_successful
+        expect(response).to have_http_status(404)
 
-      message = JSON.parse(response.body, symbolize_names: true)
+        message = JSON.parse(response.body, symbolize_names: true)
 
-      expect(message[:errors][:detail]).to eq('Validation failed: Market must exist')
+        expect(message[:errors][:detail]).to eq('Validation failed: Market must exist')
+      end
+    end
+
+    describe 'sad_path #2' do
+      it 'passes valid ids but marketvendor with those values already exists' do
+        it 'market or vendor id is invalid' do
+          MarketVendor.create!(market_id: @market1.id, vendor_id: @vendor1.id)
+          post '/api/v0/market_vendors', params: invalid_params.to_json, headers: { 'Content-Type' => 'application/json' }
+
+          expect(response).to_not be_successful
+          expect(response).to have_http_status(422)
+
+          message = JSON.parse(response.body, symbolize_names: true)
+
+          expect(message[:errors][:detail]).to eq("Validation failed: Market vendor association between market with
+            market_id=#{@market1.id} and vendor_id=#{@vendor1.id} already exists")
+        end
+      end
     end
   end
 end
