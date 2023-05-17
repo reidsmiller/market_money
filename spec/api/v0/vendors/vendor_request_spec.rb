@@ -126,6 +126,11 @@ RSpec.describe 'Vendor Requests' do
       'credit_accepted': false
     } } }
 
+    let(:bad_params) { { title: 'Test Post', body: {
+      'contact_name': '',
+      'credit_accepted': false
+    } } }
+
     it 'happy path' do
       patch "/api/v0/vendors/#{@vendor1.id}", params: edit_params.to_json, headers: { 'Content-Type' => 'application/json' }
 
@@ -159,7 +164,17 @@ RSpec.describe 'Vendor Requests' do
 
       data = JSON.parse(response.body, symbolize_names: true)
 
-      expect(data[:errors][:detail]).to eq("Couldn't find Market with 'id'=123123123123")
+      expect(data[:errors][:detail]).to eq("Couldn't find Vendor with 'id'=123123123123")
+    end
+
+    it 'sad path #2' do
+      patch "/api/v0/vendors/#{@vendor1.id}", params: bad_params.to_json, headers: { 'Content-Type' => 'application/json' }
+
+      expect(response).to_not be_successful
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data[:errors][:detail]).to eq("Validation failed: Contact name can't be blank")
     end
   end
 end
