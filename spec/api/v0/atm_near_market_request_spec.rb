@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe 'AtmNearMarket API' do
   describe 'finds atms' do
     before(:each) do
-      @market = Market.create!(name: 'Union Station Farmers Market', address_line_1: '1701 Wynkoop St', city: 'Denver', state: 'CO', zip: '80202', lat: 39.752986, lon: -104.998399)
+      @market = create(:market, lat: 39.752986, lon: -104.998399)
     end
 
-    describe 'happy path' do
+    describe 'happy path', :vcr do
       it 'returns all atms near a market from closest to farthest' do
         get "/api/v0/markets/#{@market[:id]}/nearest_atms"
 
@@ -44,6 +44,7 @@ RSpec.describe 'AtmNearMarket API' do
           expect(atm[:attributes][:distance]).to be_a(Float)
         end
 
+        i = 0
         if i < atms.length - 1
           expect(atms[i][:attributes][:distance]).to be < (atms[(i+1)][:attributes][:distance])
         end

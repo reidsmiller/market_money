@@ -19,7 +19,7 @@ class Api::V0::MarketsController < ApplicationController
   end
 
   def nearest_atms
-    atms = AtmFacade.new(params).nearest_atms
+    atms = AtmFacade.new(Market.find(params[:id])).nearest_atms
     render json: AtmSerializer.new(atms)
   end
 end
