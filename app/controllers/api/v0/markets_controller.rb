@@ -10,11 +10,15 @@ class Api::V0::MarketsController < ApplicationController
   end
 
   def search
-    markets = MarketsFacade.new(params).search_markets
-    if markets.include?('Invalid set of parameters')
-      render json: ErrorSerializer.new(markets).serialize, status: 422
+    markets_or_error = MarketsFacade.new(params).search_markets
+    if markets_or_error.include?('Invalid set of parameters')
+      render json: ErrorSerializer.new(markets_or_error).serialize, status: 422
     else
-      render json: MarketSerializer.new(markets)
+      render json: MarketSerializer.new(markets_or_error)
     end
+  end
+
+  def nearest_atms
+
   end
 end
