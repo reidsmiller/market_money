@@ -134,7 +134,7 @@ RSpec.describe 'Markets Request' do
         expect(markets).to be_an(Array)
 
         expect(markets.first).to have_key(:id)
-        expect(markets.first[:id].to_s).to eq(@market1.id)
+        expect(markets.first[:id].to_i).to eq(@market1.id)
 
         expect(markets.first).to have_key(:type)
         expect(markets.first[:type]).to eq('market')
@@ -185,7 +185,7 @@ RSpec.describe 'Markets Request' do
         expect(markets).to be_an(Array)
 
         expect(markets.first).to have_key(:id)
-        expect(markets.first[:id].to_s).to eq(@market1.id)
+        expect(markets.first[:id].to_i).to eq(@market1.id)
 
         expect(markets.first).to have_key(:type)
         expect(markets.first[:type]).to eq('market')
@@ -236,7 +236,7 @@ RSpec.describe 'Markets Request' do
         expect(markets).to be_an(Array)
 
         expect(markets.first).to have_key(:id)
-        expect(markets.first[:id].to_s).to eq(@market1.id)
+        expect(markets.first[:id].to_i).to eq(@market1.id)
 
         expect(markets.first).to have_key(:type)
         expect(markets.first[:type]).to eq('market')

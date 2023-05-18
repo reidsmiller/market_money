@@ -8,5 +8,7 @@ class Api::V0::MarketsController < ApplicationController
   end
 
   def search
+    markets = MarketsFacade.new(params).search_markets
+    render json: MarketSerializer.new(markets)
   end
 end
