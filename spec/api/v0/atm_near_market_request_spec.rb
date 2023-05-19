@@ -8,7 +8,7 @@ RSpec.describe 'AtmNearMarket API' do
 
     describe 'happy path', :vcr do
       it 'returns all atms near a market from closest to farthest' do
-        get "/api/v0/markets/#{@market[:id]}/nearest_atm"
+        get "/api/v0/markets/#{@market[:id]}/nearest_atms"
 
         expect(response).to be_successful
         expect(response).to have_http_status(200)
@@ -53,13 +53,13 @@ RSpec.describe 'AtmNearMarket API' do
 
     describe 'sad path', :vcr do
       it 'returns an error if market id is invalid' do
-        get '/api/v0/markets/123123123123/nearest_atm'
+        get '/api/v0/markets/123123123123/nearest_atms'
 
         expect(response).to_not be_successful
         expect(response).to have_http_status(404)
 
         data = JSON.parse(response.body, symbolize_names: true)
-        
+
         expect(data[:errors][:detail]).to eq("Couldn't find Market with 'id'=123123123123")
       end
     end
