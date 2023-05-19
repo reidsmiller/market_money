@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v0 do
       get '/markets/search', to: 'markets#search'
-      get '/markets/:id/nearest_atm', to: 'markets#nearest_atm'
+      get '/markets/:id/nearest_atms', to: 'markets#nearest_atms'
       resources :markets, only: [:index, :show] do
         resources :vendors, only: [:index]
       end
