@@ -5,6 +5,6 @@ class MarketVendorNotFoundSerializer
   end
 
   def serialize
-      { errors: { detail: "No MarketVendor with market_id=#{@params[:market_id]} AND vendor_id=#{@params[:vendor_id]}" } }
+    { errors: { detail: "No MarketVendor with market_id=#{@params[:market_id]} AND vendor_id=#{@params[:vendor_id]}" } }
   end
 end
