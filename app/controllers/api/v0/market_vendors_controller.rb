@@ -20,7 +20,7 @@ class Api::V0::MarketVendorsController < ApplicationController
 
   def render_unprocessable_entity_response(exception)
     response_status = MarketVendorValidationSerializer.new(exception).find_status
-    render json: { errors: { detail: exception.message } }, status: response_status
+    render json: ErrorSerializer.new(exception.message).serialize, status: response_status
   end
 
   def render_not_found_response(exception)
