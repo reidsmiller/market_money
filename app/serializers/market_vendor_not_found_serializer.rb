@@ -5,7 +5,7 @@ class MarketVendorNotFoundSerializer
   end
 
   def serialize
-    if @exception.message.include?('[WHERE')
+    if @exception.message.include?("Couldn't find MarketVendor with")
       { errors: { detail: "No MarketVendor with market_id=#{@params[:market_id]} AND vendor_id=#{@params[:vendor_id]}" } }
     else
       { errors: { detail: @exception.message } }

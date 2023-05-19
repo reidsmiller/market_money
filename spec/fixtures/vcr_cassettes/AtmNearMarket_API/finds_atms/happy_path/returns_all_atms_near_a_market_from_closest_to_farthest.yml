@@ -1,0 +1,100 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.tomtom.com/search/2/categorySearch/automatic%20teller%20machine.json?key=<tomtomapi>&lat=39.752986&lon=-104.998399
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.7.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 18 May 2023 22:13:15 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Tracking-Id:
+      - 4f52b7b0-e03f-48a8-9568-e92e20dcb5b3
+      Access-Control-Expose-Headers:
+      - Tracking-ID
+      X-Apigee.target-Latency:
+      - '158'
+      X-Envoy-Upstream-Service-Time:
+      - '175'
+      Server:
+      - tomtom
+      X-Tomtom-Processed-By:
+      - westus2
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"summary":{"query":"automatic teller machine","queryType":"NON_NEAR","queryTime":154,"numResults":10,"offset":0,"totalResults":94,"fuzzyLevel":2,"geoBias":{"lat":39.752986,"lon":-104.998399},"geobiasCountry":"US"},"results":[{"type":"POI","id":"1XR3--3jtYm6unBmkqeaQw","score":8.7476718891,"dist":43.215764,"info":"search:ta:840089002601478-US","poi":{"name":"Lynk
+        Systems","categorySet":[{"id":7397}],"categories":["cash dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"1634","streetName":"18th Street","municipalitySubdivision":"Downtown
+        Denver","municipality":"Denver","countrySecondarySubdivision":"Denver","countrySubdivision":"CO","countrySubdivisionName":"Colorado","postalCode":"80202","extendedPostalCode":"80202-1212","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"1634 18th Street, Denver,
+        CO 80202","localName":"Denver"},"position":{"lat":39.753359,"lon":-104.998541},"viewport":{"topLeftPoint":{"lat":39.75426,"lon":-104.99971},"btmRightPoint":{"lat":39.75246,"lon":-104.99737}},"entryPoints":[{"type":"main","position":{"lat":39.75356,"lon":-104.99827}},{"type":"main","position":{"lat":39.75359,"lon":-104.99831}}]},{"type":"POI","id":"LptaiHox1LzjSpAp5vgOGQ","score":8.7476671684,"dist":80.456,"info":"search:ta:840089002931103-US","poi":{"name":"ATM","categorySet":[{"id":7397}],"categories":["cash
+        dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"1601","streetName":"17th Street","municipalitySubdivision":"Downtown
+        Denver","municipality":"Denver","countrySecondarySubdivision":"Denver","countrySubdivision":"CO","countrySubdivisionName":"Colorado","postalCode":"80202","extendedPostalCode":"80202-1203","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"1601 17th Street, Denver,
+        CO 80202","localName":"Denver"},"position":{"lat":39.752335,"lon":-104.99881},"viewport":{"topLeftPoint":{"lat":39.75323,"lon":-104.99998},"btmRightPoint":{"lat":39.75144,"lon":-104.99764}},"entryPoints":[{"type":"main","position":{"lat":39.75223,"lon":-104.99894}}]},{"type":"POI","id":"zgJW5g80puy6cuGWC-ZJ9w","score":8.7476645458,"dist":91.927227,"info":"search:ta:840089000470945-US","poi":{"name":"Alpine
+        Bank","phone":"+1 303-573-0709","categorySet":[{"id":7397}],"categories":["cash
+        dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"1777","streetName":"Wynkoop Street","municipalitySubdivision":"Union
+        Station","municipality":"Denver","countrySecondarySubdivision":"Denver","countrySubdivision":"CO","countrySubdivisionName":"Colorado","postalCode":"80202","extendedPostalCode":"80202-2197","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"1777 Wynkoop Street, Denver,
+        CO 80202","localName":"Denver"},"position":{"lat":39.753758,"lon":-104.998782},"viewport":{"topLeftPoint":{"lat":39.75466,"lon":-104.99995},"btmRightPoint":{"lat":39.75286,"lon":-104.99761}},"entryPoints":[{"type":"main","position":{"lat":39.75366,"lon":-104.99865}}]},{"type":"POI","id":"zcsa4xA1_S1gqU4aQ9kBPQ","score":8.7476603497,"dist":111.759689,"info":"search:ta:840089001498273-US","poi":{"name":"ATM
+        at Citibank","brands":[{"name":"Citibank"}],"categorySet":[{"id":7397}],"categories":["cash
+        dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"1755","streetName":"Blake Street","municipalitySubdivision":"Downtown
+        Denver","municipality":"Denver","countrySecondarySubdivision":"Denver","countrySubdivision":"CO","countrySubdivisionName":"Colorado","postalCode":"80202","extendedPostalCode":"80202-1221","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"1755 Blake Street, Denver,
+        CO 80202","localName":"Denver"},"position":{"lat":39.752423,"lon":-104.997316},"viewport":{"topLeftPoint":{"lat":39.75332,"lon":-104.99849},"btmRightPoint":{"lat":39.75152,"lon":-104.99615}},"entryPoints":[{"type":"main","position":{"lat":39.75219,"lon":-104.99702}}]},{"type":"POI","id":"zjTufBplXCVGBvTaXBFFKQ","score":8.7476572025,"dist":124.070909,"info":"search:ta:840089002582138-US","poi":{"name":"Metabank","categorySet":[{"id":7397}],"categories":["cash
+        dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"1600","streetName":"17th Street","municipalitySubdivision":"Downtown
+        Denver","municipality":"Denver","countrySecondarySubdivision":"Denver","countrySubdivision":"CO","countrySubdivisionName":"Colorado","postalCode":"80202","extendedPostalCode":"80202-1204","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"1600 17th Street, Denver,
+        CO 80202","localName":"Denver"},"position":{"lat":39.752059,"lon":-104.999206},"viewport":{"topLeftPoint":{"lat":39.75296,"lon":-105.00038},"btmRightPoint":{"lat":39.75116,"lon":-104.99804}},"entryPoints":[{"type":"main","position":{"lat":39.75227,"lon":-104.99899}}]},{"type":"POI","id":"w_oI-2fc-DlunAwEfnC5KQ","score":8.7476545799,"dist":134.946721,"info":"search:ta:840089003002758-US","poi":{"name":"Prosperity
+        Bank","categorySet":[{"id":7397}],"categories":["cash dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"1775","streetName":"Blake Street","municipalitySubdivision":"Downtown
+        Denver","municipality":"Denver","countrySecondarySubdivision":"Denver","countrySubdivision":"CO","countrySubdivisionName":"Colorado","postalCode":"80202","extendedPostalCode":"80202-1221","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"1775 Blake Street, Denver,
+        CO 80202","localName":"Denver"},"position":{"lat":39.752389,"lon":-104.997024},"viewport":{"topLeftPoint":{"lat":39.75329,"lon":-104.99819},"btmRightPoint":{"lat":39.75149,"lon":-104.99585}},"entryPoints":[{"type":"main","position":{"lat":39.75229,"lon":-104.9969}}]},{"type":"POI","id":"KPwfR9jfLArMNnhpZrPyZQ","score":8.7476535309,"dist":137.264697,"info":"search:ta:840089001658369-US","poi":{"name":"ATM
+        at Lynk Payment Systems Hawaii","categorySet":[{"id":7397}],"categories":["cash
+        dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"1805","streetName":"Blake Street","municipalitySubdivision":"Downtown
+        Denver","municipality":"Denver","countrySecondarySubdivision":"Denver","countrySubdivision":"CO","countrySubdivisionName":"Colorado","postalCode":"80202","extendedPostalCode":"80202-1227","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"1805 Blake Street, Denver,
+        CO 80202","localName":"Denver"},"position":{"lat":39.7528,"lon":-104.996812},"viewport":{"topLeftPoint":{"lat":39.7537,"lon":-104.99798},"btmRightPoint":{"lat":39.7519,"lon":-104.99564}},"entryPoints":[{"type":"main","position":{"lat":39.75258,"lon":-104.99652}}]},{"type":"POI","id":"DfnkyKSifnqrzPXR5OwMAA","score":8.7476535309,"dist":138.296143,"info":"search:ta:840089001030913-US","poi":{"name":"ATM
+        at Celtic Tavern","categorySet":[{"id":7397}],"categories":["cash dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"1801","streetName":"Blake Street","municipalitySubdivision":"Downtown
+        Denver","municipality":"Denver","countrySecondarySubdivision":"Denver","countrySubdivision":"CO","countrySubdivisionName":"Colorado","postalCode":"80202","extendedPostalCode":"80202-1227","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"1801 Blake Street, Denver,
+        CO 80202","localName":"Denver"},"position":{"lat":39.752792,"lon":-104.996801},"viewport":{"topLeftPoint":{"lat":39.75369,"lon":-104.99797},"btmRightPoint":{"lat":39.75189,"lon":-104.99563}},"entryPoints":[{"type":"main","position":{"lat":39.75258,"lon":-104.99652}}]},{"type":"POI","id":"4QrMaH98MPLLGhbx9Kd5xQ","score":8.7476524819,"dist":138.435753,"info":"search:ta:840087000061009-US","poi":{"name":"ATM","categorySet":[{"id":7397}],"categories":["cash
+        dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"1701","streetName":"Wynkoop Street","municipalitySubdivision":"Union
+        Station","municipality":"Denver","countrySecondarySubdivision":"Denver","countrySubdivision":"CO","countrySubdivisionName":"Colorado","postalCode":"80202","extendedPostalCode":"80202-1106","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"1701 Wynkoop Street, Denver,
+        CO 80202 (80202-1106)","localName":"Denver"},"position":{"lat":39.753039,"lon":-105.000017},"viewport":{"topLeftPoint":{"lat":39.75394,"lon":-105.00119},"btmRightPoint":{"lat":39.75214,"lon":-104.99885}},"entryPoints":[{"type":"main","position":{"lat":39.75281,"lon":-104.99972}}]},{"type":"POI","id":"WXO9qxbN-M1s6y58TnIc3A","score":8.7476509083,"dist":145.183209,"info":"search:ta:840089002601564-US","poi":{"name":"Firstbank","categorySet":[{"id":7397}],"categories":["cash
+        dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"1701","streetName":"Wynkoop Street","municipalitySubdivision":"Union
+        Station","municipality":"Denver","countrySecondarySubdivision":"Denver","countrySubdivision":"CO","countrySubdivisionName":"Colorado","postalCode":"80202","extendedPostalCode":"80202-1026","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"1701 Wynkoop Street, Denver,
+        CO 80202 (80202-1026)","localName":"Denver"},"position":{"lat":39.753166,"lon":-105.000081},"viewport":{"topLeftPoint":{"lat":39.75407,"lon":-105.00125},"btmRightPoint":{"lat":39.75227,"lon":-104.99891}},"entryPoints":[{"type":"main","position":{"lat":39.75291,"lon":-104.9996}}]}]}'
+  recorded_at: Thu, 18 May 2023 22:13:15 GMT
+recorded_with: VCR 6.1.0
